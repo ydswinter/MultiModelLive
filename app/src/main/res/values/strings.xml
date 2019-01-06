@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">多模直播系统</string>
+    <string name="menu">菜单</string>
+    <string name="setting">设置</string>
+    <string name="feedback">反馈</string>
+    <string name="about">关于</string>
+    <string name="live">直播</string>
+    <string name="team">团队</string>
+    <string name="contacts">联系人</string>
+    <string name="local_file">本地文件</string>
+    <string name="cloud_file">云文件</string>
+    <string name="more">更多</string>
+</resources>
