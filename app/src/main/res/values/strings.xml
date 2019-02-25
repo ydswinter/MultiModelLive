@@ -12,6 +12,7 @@
     <string name="more">更多</string>
     <string name="account">账号</string>
     <string name="password">密码</string>
+    <string name="cpassword">确认密码</string>
     <string name="sign_in">登录</string>
     <string name="sign_up">注册</string>
     <string name="copyright">copyright©ydswinter all reserved</string>
