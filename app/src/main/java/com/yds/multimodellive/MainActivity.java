@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
+import com.yds.multimodellive.communication.ContactsManager;
 import com.yds.multimodellive.util.PermissionUtil;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         permissions.add(Manifest.permission.CAMERA);
         permissions.add(Manifest.permission.RECORD_AUDIO);
         PermissionUtil.checkPermission(this,permissions);
+        ContactsManager contactsManager = new ContactsManager();
     }
 
     private void initView(){

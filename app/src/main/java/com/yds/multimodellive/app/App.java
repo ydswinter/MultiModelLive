@@ -5,6 +5,7 @@ import android.app.Application;
 
 import com.yds.multimodellive.util.PermissionUtil;
 
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +13,13 @@ public class App extends Application {
 
     private Application instance;
 
+    private Socket socket;
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
+        socket = new Socket();
 
     }
 
@@ -25,5 +29,13 @@ public class App extends Application {
      */
     public Application getInstance(){
         return instance;
+    }
+
+    /**
+     * 获取视频传输socket
+     */
+
+    public Socket getSocket(){
+        return socket;
     }
 }
