@@ -22,7 +22,7 @@ public class LiveActivity extends AppCompatActivity {
         if(backPressedCount%2==0){
             Toast.makeText(LiveActivity.this,"再按一次退出",Toast.LENGTH_SHORT).show();
             backPressedCount+=1;
-            taskHanlder.sendEmptyMessageDelayed(0x1001,2000);
+            taskHanlder.sendEmptyMessageDelayed( 0x1002,2000);
         }else{
             finish();
         }
@@ -34,7 +34,7 @@ public class LiveActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
-                case 0x1001:
+                case 0x1002:
                     backPressedCount = 0;
                     break;
             }

@@ -1,25 +1,36 @@
 package com.yds.multimodellive.app;
 
-import android.Manifest;
 import android.app.Application;
+import android.util.Log;
 
-import com.yds.multimodellive.util.PermissionUtil;
+import com.yds.multimodellive.communication.SocketPool;
 
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.net.ServerSocket;
 
 public class App extends Application {
+    private static final String TAG = "Application";
+    private static App instance;
 
-    private Application instance;
+    /**
+     * 服务端单例对象
+     */
+    private volatile ServerSocket serverSocket;
 
-    private Socket socket;
+    /**
+     * 服务端Socket管理池
+     */
+    private volatile SocketPool serverSocketPool;;
+
+    /**
+     * 客户端Socket管理池
+     */
+    private volatile SocketPool clientSocketPool;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        socket = new Socket();
 
     }
 
@@ -27,15 +38,46 @@ public class App extends Application {
      * 获取app实例对象
      * @return
      */
-    public Application getInstance(){
+    public static App getInstance(){
         return instance;
     }
 
-    /**
-     * 获取视频传输socket
-     */
+    public ServerSocket getServerSocket(){
+        synchronized (this){
+            try {
+                if (serverSocket==null){
+                    serverSocket = new ServerSocket(7777);
+                    Log.i(TAG, "getServerSocket: 服务器通信接口已创建...");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-    public Socket getSocket(){
-        return socket;
+        }
+        return serverSocket;
+    }
+
+    public SocketPool getServerSocketPool(){
+        if (serverSocketPool==null){
+            synchronized (this){
+                if (serverSocketPool==null){
+                    serverSocketPool = new SocketPool();
+                }
+            }
+        }
+        return serverSocketPool;
+    }
+
+    public SocketPool getClientSocketPool(){
+        if (clientSocketPool==null){
+            synchronized (this){
+                if (clientSocketPool==null){
+                    clientSocketPool = new SocketPool();
+                }
+
+            }
+        }
+
+        return clientSocketPool;
     }
 }

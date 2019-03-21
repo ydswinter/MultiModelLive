@@ -15,10 +15,8 @@ import android.support.annotation.NonNull;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.yds.multimodellive.util.FileUtil;
-import com.yds.multimodellive.util.PermissionUtil;
+import com.yds.multimodellive.utils.PermissionUtil;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

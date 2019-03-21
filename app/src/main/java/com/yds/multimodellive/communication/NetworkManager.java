@@ -25,7 +25,7 @@ public class NetworkManager {
                 Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
                 while (addresses.hasMoreElements()){
                     InetAddress address = addresses.nextElement();
-                    if(address instanceof Inet4Address && !address.getHostAddress().equals("127.0.0.1")){
+                    if(address instanceof Inet4Address&&!address.getHostAddress().equals("127.0.0.1")){
                         list.add(address);
                     }
                 }
